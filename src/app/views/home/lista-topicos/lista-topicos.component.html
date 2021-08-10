@@ -1,0 +1,10 @@
+<mat-list>
+    <div mat-subheader>Tópicos</div>
+    <mat-list-item *ngFor="let topico of topicos">
+      <mat-icon mat-list-icon class="icone-lista">topico</mat-icon>
+      <div mat-line class="titulo">{{topico.titulo}}</div>
+      <div mat-line class="data-criacao"> {{topico.dataCriacao | date}} </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+  

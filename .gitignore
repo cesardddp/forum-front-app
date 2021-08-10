@@ -43,3 +43,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+app.py
+__pycache__/app.cpython-39.pyc
+.vscode/settings.json
+home.component.spec.ts
