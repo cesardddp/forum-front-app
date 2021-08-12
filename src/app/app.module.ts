@@ -13,13 +13,17 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card'; 
 import {HttpClientModule} from '@angular/common/http';
 import { ListaTopicosComponent } from './views/home/lista-topicos/lista-topicos.component';
-import {MatListModule} from '@angular/material/list'; 
+import {MatListModule} from '@angular/material/list';
+import { LoginComponent } from './views/home/login/login.component'; 
+import { MatNativeDateModule } from '@angular/material/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ListaTopicosComponent
+    ListaTopicosComponent,
+    LoginComponent
   ],
   imports: [
     HttpClientModule,
@@ -31,7 +35,10 @@ import {MatListModule} from '@angular/material/list';
     MatButtonModule,
     MatTabsModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatNativeDateModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
