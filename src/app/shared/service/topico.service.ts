@@ -23,6 +23,9 @@ export class TopicoService {
   public getTopicos(): Observable<ResponsePageable> {
     return this.httpClient.get<ResponsePageable>(this.apiUrl);// + '?flag=' + flag);
   }
+  public getTopico(id:number): Observable<Topico> {
+    return this.httpClient.get<Topico>(this.apiUrl+"/"+id);// + '?flag=' + flag);
+  }
 
   /**
    * postTopico

@@ -20,6 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TopicoFormDialogComponent } from './views/home/topico-form-dialog/topico-form-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { DetalhesTopicosComponent } from './views/home/detalhes-topicos/detalhes-topicos.component'; 
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     ListaTopicosComponent,
     LoginComponent,
-    TopicoFormDialogComponent
+    TopicoFormDialogComponent,
+    DetalhesTopicosComponent
   ],
   imports: [
     HttpClientModule,
@@ -46,7 +49,8 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogModule,
     MatInputModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

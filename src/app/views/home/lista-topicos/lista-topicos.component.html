@@ -4,6 +4,8 @@
       <mat-icon mat-list-icon class="icone-lista">topico</mat-icon>
       <div mat-line class="titulo">{{topico.titulo}}</div>
       <div mat-line class="data-criacao"> {{topico.dataCriacao | date}} </div>
+      <button mat-raised-button color="accent" (click)="detalhesTopico(topico.id)">Ver</button>
+
     </mat-list-item>
     <mat-divider></mat-divider>
 </mat-list>

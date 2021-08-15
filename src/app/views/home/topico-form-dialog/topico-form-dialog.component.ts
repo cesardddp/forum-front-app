@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { TopicoService } from 'src/app/shared/service/topico.service';
 
 @Component({
   selector: 'app-topico-form-dialog',
@@ -13,6 +14,7 @@ export class TopicoFormDialogComponent implements OnInit {
   public topicoForm: FormGroup;
   constructor(
     private fb: FormBuilder,
+    private rest: TopicoService,
     public dialogRef: MatDialogRef<TopicoFormDialogComponent>
   ) { }
 
@@ -24,7 +26,13 @@ export class TopicoFormDialogComponent implements OnInit {
     })
   }
 
+  novoTopico(): void {
+    this.rest.postTopico(this.topicoForm.value).subscribe(result => {}) ;
+    this.dialogRef.close();
+    this.topicoForm.reset();
+  }
   cancelar(): void {
     this.dialogRef.close();
+    this.topicoForm.reset();
   }
 }

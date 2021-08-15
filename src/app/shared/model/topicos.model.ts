@@ -5,4 +5,7 @@ export class Topico{
     titulo: string;
     mensagem: string;
     dataCriacao: string;
+    nomeAutor:string;
+    status:string;
+    respostas:any[]
 }

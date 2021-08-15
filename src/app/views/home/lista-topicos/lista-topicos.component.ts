@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Topico } from 'src/app/shared/model/topicos.model';
 import { TopicoService } from 'src/app/shared/service/topico.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-lista-topicos',
@@ -12,7 +13,8 @@ export class ListaTopicosComponent implements OnInit {
   topicos: Topico[];
 
   constructor(
-    public topicoService: TopicoService 
+    public topicoService: TopicoService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -27,8 +29,9 @@ export class ListaTopicosComponent implements OnInit {
           console.log('teste')
         }
       )
-      
-      
     }
+  detalhesTopico(id:number){
+    this.router.navigate(['/topicos/'+id])    
+  }
 
 }
