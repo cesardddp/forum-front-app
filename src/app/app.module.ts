@@ -21,7 +21,11 @@ import { TopicoFormDialogComponent } from './views/home/topico-form-dialog/topic
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { DetalhesTopicosComponent } from './views/home/detalhes-topicos/detalhes-topicos.component'; 
+import { DetalhesTopicosComponent } from './views/home/detalhes-topicos/detalhes-topicos.component';
+// import { DetalhesComponent } from './views/usuario/detalhes/detalhes.component';
+import { UsuarioDetalhesComponent } from './views/usuario/usuario-detalhes/usuario-detalhes.component';
+import { CursoComponent } from './views/curso/curso.component';
+import { ListaCursosComponent } from './views/curso/lista-cursos/lista-cursos.component'; 
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { DetalhesTopicosComponent } from './views/home/detalhes-topicos/detalhes
     ListaTopicosComponent,
     LoginComponent,
     TopicoFormDialogComponent,
-    DetalhesTopicosComponent
+    DetalhesTopicosComponent,
+    // DetalhesComponent,
+    UsuarioDetalhesComponent,
+    CursoComponent,
+    ListaCursosComponent
   ],
   imports: [
     HttpClientModule,

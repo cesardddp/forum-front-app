@@ -1,0 +1,14 @@
+
+<mat-list>
+    <div mat-subheader>Cursos</div>
+    <mat-list-item *ngFor="let curso of cursos">
+          <mat-icon mat-list-icon class="icone-lista">topico</mat-icon>
+          <div mat-line class="titulo" (click)="listaTopicos(curso.nome)" >{{curso.nome}}</div>
+          <div mat-line class="categoria"> {{curso.categoria}} </div>
+          <button mat-raised-button color="accent" (click)="listaTopicos(curso.nome)">Ver</button>
+
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>
+
+  

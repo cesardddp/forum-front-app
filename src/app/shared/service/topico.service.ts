@@ -1,6 +1,8 @@
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { TOPICO } from '../model/mock-topico';
+import { TOPICOS } from '../model/mock-topicos';
 import { ResponsePageable } from '../model/responsePageable.model';
 import { Topico } from '../model/topicos.model';
 
@@ -20,11 +22,18 @@ export class TopicoService {
     private httpClient: HttpClient
   ) { }
 
-  public getTopicos(): Observable<ResponsePageable> {
-    return this.httpClient.get<ResponsePageable>(this.apiUrl);// + '?flag=' + flag);
+  public getTopicos(curso:string): Observable<ResponsePageable> {
+  // public getTopicos(curso:string): Observable<Topico[]> {
+    // TODO
+    // return this.httpClient.get<ResponsePageable>(this.apiUrl+"?nomeCurso="+curso);// + '?flag=' + flag);
+    // debugger;
+    const topicos = of(TOPICOS)
+     return topicos
   }
   public getTopico(id:number): Observable<Topico> {
-    return this.httpClient.get<Topico>(this.apiUrl+"/"+id);// + '?flag=' + flag);
+    const topico = of(TOPICO)
+     return topico
+    // return this.httpClient.get<Topico>(this.apiUrl+"/"+id);// + '?flag=' + flag);
   }
 
   /**

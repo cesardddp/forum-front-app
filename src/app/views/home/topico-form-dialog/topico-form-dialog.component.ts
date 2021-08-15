@@ -11,7 +11,8 @@ import { TopicoService } from 'src/app/shared/service/topico.service';
 })
 export class TopicoFormDialogComponent implements OnInit {
 
-  public topicoForm: FormGroup;
+  public topicoForm!: FormGroup;
+
   constructor(
     private fb: FormBuilder,
     private rest: TopicoService,

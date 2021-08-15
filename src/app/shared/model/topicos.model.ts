@@ -7,5 +7,6 @@ export class Topico{
     dataCriacao: string;
     nomeAutor:string;
     status:string;
+    curso:string;
     respostas:any[]
 }

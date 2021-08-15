@@ -49,3 +49,5 @@ home.component.spec.ts
 fakeapi/__pycache__/
 fakeapi/.vscode/
 fakeapi/poetry.lock
+models java/
+src/anotações.md

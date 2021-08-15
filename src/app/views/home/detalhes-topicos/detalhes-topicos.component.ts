@@ -11,7 +11,8 @@ import { Location } from '@angular/common';
 })
 export class DetalhesTopicosComponent implements OnInit {
 
-  topico: Topico;// | undefined;
+  topico!: Topico;// | undefined;
+
   constructor(
     public topicoService: TopicoService,
     private route: ActivatedRoute,

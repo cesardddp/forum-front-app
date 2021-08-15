@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../model/user.model';
+import { Usuario } from '../model/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,8 @@ import { User } from '../model/user.model';
 export class LoginService {
 
   constructor() {
-    public posLogin(logn:any):Observable<User>{
-      return this.httpClie
-    }
+    // public posLogin(logn:any):Observable<User>{
+    //   return this.httpClie
+    // }
   }
 }
