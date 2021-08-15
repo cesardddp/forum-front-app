@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ResponsePageable } from '../model/responsePageable.model';
+import { Topico } from '../model/topicos.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,13 @@ export class TopicoService {
 
   public getTopicos(): Observable<ResponsePageable> {
     return this.httpClient.get<ResponsePageable>(this.apiUrl);// + '?flag=' + flag);
+  }
+
+  /**
+   * postTopico
+   */
+  public postTopico(topico:any):Observable<Topico> {
+    return this.httpClient.post<any>(this.apiUrl,topico,this.httpOptions);    
   }
 
 }
