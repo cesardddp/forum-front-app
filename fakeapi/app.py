@@ -1,16 +1,16 @@
 from flask import Flask,abort
 from flask.json import jsonify
 from flask_cors import CORS
-from db import projetos
+from db import topicos
 
 
 app = Flask(__name__)
 CORS(app)
 
 @app.route('/topicos')
-def topicos():
+def topicos_():
     return jsonify(
-        {"content":projetos,
+        {"content":topicos,
         "pageable": {
             "sort": {
             "sorted": True,
@@ -40,14 +40,12 @@ def topicos():
 @app.route('/topicos/<int:id_projeto>')
 def topico_detalhe(id_projeto):
     try:
-        projeto = next(
-            filter(lambda proj:proj['id']==id_projeto,projetos)
+        topico = next(
+            filter(lambda proj:proj['id']==id_projeto,topicos)
             )
     except StopIteration:
         return abort(404)
-    return jsonify(
-        projeto
-        )
+    return jsonify(topico)
 
 @app.route('/login',methods=["POST"])
 def login():

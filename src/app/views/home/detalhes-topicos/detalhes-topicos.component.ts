@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Topico } from 'src/app/shared/model/topicos.model';
 import { TopicoService } from 'src/app/shared/service/topico.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detalhes-topicos',
@@ -10,10 +11,11 @@ import { TopicoService } from 'src/app/shared/service/topico.service';
 })
 export class DetalhesTopicosComponent implements OnInit {
 
-  public topico: Topico;// | undefined;
+  topico: Topico;// | undefined;
   constructor(
     public topicoService: TopicoService,
     private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +33,9 @@ export class DetalhesTopicosComponent implements OnInit {
     console.log(this.topico)
     // console.log('teste')
 
+  }
+  goBack(): void {
+    this.location.back();
   }
 
 }
