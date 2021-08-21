@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "forum-fornt-app": {
+    "forum-front-app2": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/forum-fornt-app",
+            "outputPath": "dist/forum-front-app2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "forum-fornt-app:build:production"
+              "browserTarget": "forum-front-app2:build:production"
             },
             "development": {
-              "browserTarget": "forum-fornt-app:build:development"
+              "browserTarget": "forum-front-app2:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "forum-fornt-app:build"
+            "browserTarget": "forum-front-app2:build"
           }
         },
         "test": {
@@ -104,5 +104,5 @@
       }
     }
   },
-  "defaultProject": "forum-fornt-app"
+  "defaultProject": "forum-front-app2"
 }

@@ -1,0 +1,28 @@
+<!-- NAVBAR -->
+<mat-toolbar>
+  <mat-toolbar-row class="tololbar">
+      <span>ForumDev<mat-icon></mat-icon></span>
+      <!-- <span class="example-spacer"></span> -->
+  </mat-toolbar-row>
+  <mat-toolbar-row class="">
+      <span>Cursos > {{curso}}<mat-icon></mat-icon></span>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- LISTA DE TOPICOS -->
+<button mat-raised-button color="accent" (click)="goBack()">Voltar</button>
+<mat-list>
+    <mat-list-item *ngFor="let topico of topicos">
+      <mat-icon mat-list-icon class="icone-lista">topico</mat-icon>
+      <div mat-line class="titulo"(click)="detalhesTopico(topico.id)">{{topico.titulo}}</div>
+      <div mat-line class="data-criacao"> {{topico.dataCriacao | date}} </div>
+      <button mat-raised-button color="accent" (click)="detalhesTopico(topico.id)">Ver</button>
+
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>
+<br/>
+
+
+  

@@ -1,0 +1,87 @@
+<!-- NAVBAR -->
+<mat-toolbar>
+  <mat-toolbar-row class="tololbar">
+      <span>ForumDev<mat-icon></mat-icon></span>
+      <!-- <span class="example-spacer"></span> -->
+  </mat-toolbar-row>
+  <mat-toolbar-row class="">
+      <span>Cursos > {{cursoNome}} > {{topico.titulo}}<mat-icon></mat-icon></span>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- Detalhe DE TÓPICO -->
+<!-- <router-outlet></router-outlet> -->
+<!-- <mat-toolbar>
+    <mat-toolbar-row class="tololbar">
+      <span>ForumDev<mat-icon></mat-icon></span>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="">
+      <span>Cursos<mat-icon></mat-icon></span>
+  
+    </mat-toolbar-row>
+  <mat-toolbar-row>
+</mat-toolbar-row>
+
+</mat-toolbar> -->
+<!-- markk -->
+<button mat-button (click)="goBack()">Voltar</button>
+  <div class="container">
+    <!-- <mat-grid-list cols="4"> -->
+    
+      <!-- markk -->
+    <div class="topico">
+    <!-- <mat-grid-tile [colspan]="3" [rowspan]="1" [style.background]="1"> -->
+  
+        <div class="topico-header">
+          <!-- <div mat-card-avatar class="example-header-image"></div> -->
+          <h1>{{topico.titulo}}</h1>
+          <div class="topico-info">
+            <ul>
+              <li><b>Criado em: </b>{{topico.dataCriacao}}</li>
+              <li><b>Autor: </b>{{topico.nomeAutor}}</li>
+              <li>{{topico.status}}</li>
+            </ul>
+          </div>
+          <hr>
+        </div>
+        <div class="topico-content">
+          <p>{{topico.mensagem}}</p>
+        </div>
+        
+        <div class="respostas">
+          <textarea type="text" name="" id="" [(ngModel)]="textarea"></textarea>
+          <button mat-button (click)="postNovaResposta()">Nova Resposta</button>
+          
+          <div *ngFor="let resposta of topico.respostas">
+            <div>
+              <b>Autor: </b> {{resposta.autor}}
+              <b>Respondido em: </b> {{resposta.dataCriacao}}
+              <p>{{resposta.mensagem}}</p>
+            </div>
+          </div>
+        </div>
+  
+      <!-- markk -->
+      </div>
+      <!-- </mat-grid-tile> -->
+  
+    <!-- markk -->
+    <div class="recomendacao">
+    <!-- <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="1"> -->
+  
+      <h2>RECOMENDAÇÕES</h2>
+      <ul>
+        <li>recomendação</li>
+        <li>recomendação</li>
+        <li>recomendação</li>
+        <li>recomendação</li>
+      </ul>
+  
+    <!-- markk -->
+    </div>
+    <!-- </mat-grid-tile> -->
+  
+  <!-- markk -->
+  </div>
+  <!-- </mat-grid-list> -->
