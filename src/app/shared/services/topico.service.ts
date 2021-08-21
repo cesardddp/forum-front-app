@@ -14,7 +14,8 @@ export class TopicoService {
   httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
-      })
+      }),
+      observe : 'response' as 'body'
     };
   constructor(
     private httpClient: HttpClient,
@@ -38,6 +39,8 @@ export class TopicoService {
     // debugger;
     // return this.httpClient.post<any>(this.apiUrl,resposta,this.httpOptions);   
     return of(resposta)
-
+  }
+  public novoTopico(topico:Topico):Observable<any>{
+    return this.httpClient.post<Topico>(this.apiUrl,topico,this.httpOptions)
   }
 }

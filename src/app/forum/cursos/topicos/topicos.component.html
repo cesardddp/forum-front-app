@@ -2,7 +2,10 @@
 <mat-toolbar>
   <mat-toolbar-row class="tololbar">
       <span>ForumDev<mat-icon></mat-icon></span>
-      <!-- <span class="example-spacer"></span> -->
+      <span class="example-spacer"></span>
+      <button mat-raised-button (click)="novoTopico()"> 
+        <mat-icon>add</mat-icon>Novo Tópico
+    </button>
   </mat-toolbar-row>
   <mat-toolbar-row class="">
       <span>Cursos > {{curso}}<mat-icon></mat-icon></span>

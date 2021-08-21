@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Topico } from 'src/app/shared/models/topicos.model';
-
-import { TopicoService } from 'src/app/shared/services/topico.service';
 import { ActivatedRoute, Router } from '@angular/router'
 import { Location } from '@angular/common';
+
+import { Topico } from 'src/app/shared/models/topicos.model';
+import { TopicoService } from 'src/app/shared/services/topico.service';
+
+import { TopicoFormDialogComponent } from "./topico-form-dialog/topico-form-dialog.component";
+// import { MatDialog } from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
+
 @Component({
   selector: 'app-topicos',
   templateUrl: './topicos.component.html',
@@ -17,7 +22,8 @@ export class TopicosComponent implements OnInit {
     public topicoService: TopicoService,
     private router: Router,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    public dialog: MatDialog           
   ) { }
 
   ngOnInit(): void {
@@ -43,5 +49,16 @@ export class TopicosComponent implements OnInit {
   }
   goBack(): void {
     this.location.back();
+  }
+  novoTopico():void{
+    const dialogRef = this.dialog.open(TopicoFormDialogComponent,{
+      minWidth: '400px',
+      data:{
+        cursoNome:this.curso
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }
