@@ -1,0 +1,22 @@
+body {
+    background-color: #9c27b0;
+}
+form {
+    background-color: #303030;
+    display: grid;
+    width: 20rem;
+    height: 20rem;
+    justify-content: center;
+    margin: 50px auto;
+    padding: 3em 0px 0px 0;
+}
+.mat-input-element {
+    color: black;
+}
+h1{
+    color:aliceblue;
+    margin: 0 auto;
+}
+.submit {
+    margin: 0 auto;
+}

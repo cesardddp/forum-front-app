@@ -11,5 +11,12 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  public getUser(){
+    let user = {
+      'nome':localStorage.getItem('nome'),
+      'email':localStorage.getItem('email'),
+      'token':localStorage.getItem('token'),
+    }
+    return user
+  }
 }

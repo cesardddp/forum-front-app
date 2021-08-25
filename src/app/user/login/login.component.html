@@ -1,0 +1,35 @@
+       
+<body>
+    
+    <form class="novo-topico" [formGroup]="loginForm">
+        <h1>Login</h1>
+        
+        <p>
+        <mat-form-field appearance="outline" >
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" name="email" placeholder="Digite seu email...">
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="novo-topico-full-width" appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input type="password" matInput formControlName="senha" name="senha" placeholder="Digite sua senha...">
+            <mat-icon matSuffix>pass</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+    </p>
+      <p class="submit">
+        <button 
+        mat-raised-button 
+        color="accent" 
+        [disabled]="!loginForm.valid"
+        (click)="login()"
+        >Criar Topico</button>
+    </p>
+</form>
+
+
+
+</body>
