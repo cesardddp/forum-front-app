@@ -1,11 +1,10 @@
-.icone-lista {
-    color: black
+.mat-toolbar {
+    background-color: #9c27b0;
 }
-.titulo {
-    color: black
-    
+.mat-list {
+    background-color: #303030;
+    height: 100%;
 }
-.data-criacao {
-    color: black
-
-}
+.example-spacer {
+    flex: 1 1 auto;
+  }

@@ -5,6 +5,9 @@ import { TopicoService } from 'src/app/shared/services/topico.service';
 import { Location } from '@angular/common';
 import { Usuario } from 'src/app/shared/models/usuario.model';
 import { Resposta } from 'src/app/shared/models/resposta.model';
+import { MatDialog } from '@angular/material/dialog';
+import { UpdateFormDialogComponent } from './update-form-dialog/update-form-dialog.component';
+import { DeleteFormDialogComponent } from './delete-form-dialog/delete-form-dialog.component';
 
 @Component({
   selector: 'app-topico-detalhe',
@@ -18,10 +21,17 @@ export class TopicoDetalheComponent implements OnInit {
   topicoId!:number;
 
   textarea="";
+  user={
+    'nome':localStorage.getItem('nome'),
+    'email':localStorage.getItem('email'),
+    'token':localStorage.getItem('token'),
+  };
   constructor(
     private topicoService: TopicoService,
     private route: ActivatedRoute,
     private location: Location,
+    public dialog: MatDialog           
+
 
   ) { }
 
@@ -45,13 +55,13 @@ export class TopicoDetalheComponent implements OnInit {
   }
   postNovaResposta(){
     //mock user - apagar
-    let mock_user = new Usuario()
-    mock_user.email = "cesar@cesar.cesar"
-
+    let user = new Usuario()
+    user.email = String(localStorage.getItem("email"))
+    // user.nome = String(localStorage.getItem("nome"))
     let novaResposta = new Resposta()
 
     novaResposta.mensagem = this.textarea,
-    novaResposta.autor = mock_user
+    novaResposta.autor = user
     novaResposta.topico = this.topico,
     novaResposta.solucao = false
     
@@ -60,5 +70,41 @@ export class TopicoDetalheComponent implements OnInit {
     this.topico.respostas.push(novaResposta)
     this.textarea = ""
     
+  }
+  editarTopico():void{
+    // if (!localStorage.nome){
+    //    this.router.navigate(['login'])    
+    //    return
+    // }
+    const dialogRef = this.dialog.open(UpdateFormDialogComponent,{
+      minWidth: '400px',
+      data:{
+        topico:this.topico,
+        cursoNome:this.cursoNome
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+  apagarTopico():void{
+    // if (!localStorage.nome){
+    //    this.router.navigate(['login'])    
+    //    return
+    // }
+    const dialogRef = this.dialog.open(DeleteFormDialogComponent,{
+      minWidth: '400px',
+      data:{
+        topico:this.topico,
+        cursoNome:this.cursoNome,
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+  logout(){
+    localStorage.clear()
+    window.location.reload();
   }
 }

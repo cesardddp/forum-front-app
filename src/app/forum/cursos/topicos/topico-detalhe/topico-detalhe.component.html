@@ -1,75 +1,73 @@
 <!-- NAVBAR -->
 <mat-toolbar>
   <mat-toolbar-row class="tololbar">
-      <span>ForumDev<mat-icon></mat-icon></span>
-      <!-- <span class="example-spacer"></span> -->
+    <span>ForumDev<mat-icon></mat-icon></span>
+    <span class="example-spacer"></span>
+    <span *ngIf="user.email !== null">
+      <button mat-button [matMenuTriggerFor]="user_menu">{{user.email}}</button>
+      <mat-menu #user_menu="matMenu">
+        <!-- <button mat-menu-item>{{user.email}}</button> -->
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </span>
+    <span *ngIf="user.nome === null;">
+      <button mat-flat-button color="accent" routerLink="/login">Login</button>
+    </span>
   </mat-toolbar-row>
   <mat-toolbar-row class="">
-      <span>Cursos > {{cursoNome}} > {{topico.titulo}}<mat-icon></mat-icon></span>
+    <span>Cursos > {{cursoNome}} > {{topico.titulo}}<mat-icon></mat-icon></span>
 
   </mat-toolbar-row>
 </mat-toolbar>
 
 <!-- Detalhe DE TÓPICO -->
-<!-- <router-outlet></router-outlet> -->
-<!-- <mat-toolbar>
-    <mat-toolbar-row class="tololbar">
-      <span>ForumDev<mat-icon></mat-icon></span>
-    </mat-toolbar-row>
-    <mat-toolbar-row class="">
-      <span>Cursos<mat-icon></mat-icon></span>
-  
-    </mat-toolbar-row>
-  <mat-toolbar-row>
-</mat-toolbar-row>
+<div class="bag">
 
-</mat-toolbar> -->
-<!-- markk -->
-<button mat-button (click)="goBack()">Voltar</button>
+  <button mat-raised-button color="accent" (click)="goBack()">Voltar</button>
+
   <div class="container">
     <!-- <mat-grid-list cols="4"> -->
-    
-      <!-- markk -->
+
     <div class="topico">
-    <!-- <mat-grid-tile [colspan]="3" [rowspan]="1" [style.background]="1"> -->
-  
-        <div class="topico-header">
-          <!-- <div mat-card-avatar class="example-header-image"></div> -->
-          <h1>{{topico.titulo}}</h1>
-          <div class="topico-info">
-            <ul>
-              <li><b>Criado em: </b>{{topico.dataCriacao}}</li>
-              <li><b>Autor: </b>{{topico.nomeAutor}}</li>
-              <li>{{topico.status}}</li>
-            </ul>
-          </div>
-          <hr>
+
+      <div class="topico-header">
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <h1>{{topico.titulo}}</h1>
+        <div class="topico-info">
+          <ul>
+            <li><b>Criado em: </b>{{topico.dataCriacao}}</li>
+            <li><b>Autor: </b>{{topico.nomeAutor}}</li>
+            <li>{{topico.status}}</li>
+          </ul>
         </div>
-        <div class="topico-content">
-          <p>{{topico.mensagem}}</p>
-        </div>
-        
-        <div class="respostas">
-          <textarea type="text" name="" id="" [(ngModel)]="textarea"></textarea>
-          <button mat-button (click)="postNovaResposta()">Nova Resposta</button>
-          
-          <div *ngFor="let resposta of topico.respostas">
-            <div>
-              <b>Autor: </b> {{resposta.autor}}
-              <b>Respondido em: </b> {{resposta.dataCriacao}}
-              <p>{{resposta.mensagem}}</p>
-            </div>
-          </div>
-        </div>
-  
-      <!-- markk -->
+        <!-- <hr> -->
       </div>
-      <!-- </mat-grid-tile> -->
-  
-    <!-- markk -->
-    <div class="recomendacao">
-    <!-- <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="1"> -->
-  
+        <div class="example-button-row">
+          <button mat-stroked-button (click)="editarTopico()" color="primary">Editar</button>
+          <button mat-stroked-button (click)="apagarTopico()" color="warn">Apagar</button>
+        </div>
+      <hr>
+      <div class="topico-content">
+        <p>{{topico.mensagem}}</p>
+      </div>
+
+      <div class="respostas">
+        <textarea type="text" name="" id="" [(ngModel)]="textarea"></textarea>
+        <button mat-raised-button color="accent" (click)="postNovaResposta()">Nova Resposta</button>
+
+        <div *ngFor="let resposta of topico.respostas">
+          <div>
+            <b>Autor: </b> {{resposta.autor.email}}
+            <b>Respondido em: </b> {{resposta.dataCriacao}}
+            <p>{{resposta.mensagem}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div class="recomendacao">
+
       <h2>RECOMENDAÇÕES</h2>
       <ul>
         <li>recomendação</li>
@@ -77,11 +75,7 @@
         <li>recomendação</li>
         <li>recomendação</li>
       </ul>
-  
-    <!-- markk -->
-    </div>
-    <!-- </mat-grid-tile> -->
-  
-  <!-- markk -->
+
+    </div> -->
   </div>
-  <!-- </mat-grid-list> -->
+</div>

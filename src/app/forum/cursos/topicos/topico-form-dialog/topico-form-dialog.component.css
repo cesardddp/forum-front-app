@@ -7,3 +7,12 @@ form > .novo-topico {
 .novo-topico-full-width {
     width: 100%;
 }
+.mat-toolbar {
+    background-color: #9c27b0;
+}
+/* .mat-list {
+    background-color: #303030
+} */
+.example-spacer {
+    flex: 1 1 auto;
+  }

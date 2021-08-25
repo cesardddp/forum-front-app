@@ -22,6 +22,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 // form
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import { MatDialogModule } from '@angular/material/dialog';
+// tree
+// import {MatTreeModule} from '@angular/material/tree'; 
+// menu
+import { MatMenuModule } from '@angular/material/menu'; 
 
 // interceptor and httpclient
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -31,6 +35,9 @@ import { JwtInterceptor } from './shared/services/jwt.interceptor';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { TopicoFormDialogComponent } from './forum/cursos/topicos/topico-form-dialog/topico-form-dialog.component';
 import { MatInputModule } from '@angular/material/input';
+import { LoginComponent } from './user/login/login.component';
+import { UpdateFormDialogComponent } from './forum/cursos/topicos/topico-detalhe/update-form-dialog/update-form-dialog.component';
+import { DeleteFormDialogComponent } from './forum/cursos/topicos/topico-detalhe/delete-form-dialog/delete-form-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +48,9 @@ import { MatInputModule } from '@angular/material/input';
     TopicosComponent,
     TopicoDetalheComponent,
     TopicoFormDialogComponent,
+    LoginComponent,
+    UpdateFormDialogComponent,
+    DeleteFormDialogComponent,
   ],
   imports: [
     HttpClientModule,
@@ -55,7 +65,8 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule ,
     MatDialogModule,
     MatButtonModule,
-    MatInputModule 
+    MatInputModule,
+    MatMenuModule
     
 
   ],

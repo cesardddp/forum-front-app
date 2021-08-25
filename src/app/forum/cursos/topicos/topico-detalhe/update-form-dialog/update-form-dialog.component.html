@@ -1,22 +1,17 @@
-<h1 mat-dialog-title>Novo tópico</h1>
+<h1 mat-dialog-title>Atualizar tópico</h1>
 <div mat-dialog-content>
     <form class="novo-topico" [formGroup]="topicoForm">
+        <span>"{{data.topico.titulo}}"</span>
         <mat-form-field class="novo-topico-full-width">
-            <mat-label>Título</mat-label>
+            <mat-label>Novo título</mat-label>
             <input matInput formControlName="titulo" name="titulo">
         </mat-form-field>
+        <span>"{{data.topico.mensagem}}"</span>
         <mat-form-field class="novo-topico-full-width">
-            <mat-label>Mensagem:</mat-label>
+            <mat-label>Nova mensagem</mat-label>
             <textarea matInput formControlName="mensagem" name="mensagem"></textarea>
         </mat-form-field>
-        <!-- <mat-form-field appearance="fill">
-            <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field> -->
-
-
+       
     </form>
 </div>
 <div mat-dialog-actions>
@@ -24,7 +19,7 @@
     <button 
         mat-raised-button 
         color="accent" 
-        (click)="novoTopico()"
+        (click)="atualizaTopico()"
         [disabled]="!topicoForm.valid"
-        >Criar Topico</button>
+        >Atualizar topico</button>
 </div>

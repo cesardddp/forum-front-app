@@ -24,7 +24,6 @@ export class TopicoService {
 
   public getTopicos(curso:string): Observable<ResponsePageable> {
     // public getTopicos(curso:string): Observable<Topico[]> {
-      // TODO
       return this.httpClient.get<ResponsePageable>(this.apiUrl+"?nomeCurso="+curso);// + '?flag=' + flag);
       // debugger;
       // const topicos = of(TOPICOS)
@@ -42,5 +41,11 @@ export class TopicoService {
   }
   public novoTopico(topico:Topico):Observable<any>{
     return this.httpClient.post<Topico>(this.apiUrl,topico,this.httpOptions)
+  }
+  public atualizarTopico(topico:Topico,id:number):Observable<any>{
+    return this.httpClient.put<Topico>(this.apiUrl+'/'+id,topico,this.httpOptions)
+  }
+  public deletarTopico(id:number):Observable<any>{
+    return this.httpClient.delete<Topico>(this.apiUrl+'/'+id,this.httpOptions)
   }
 }

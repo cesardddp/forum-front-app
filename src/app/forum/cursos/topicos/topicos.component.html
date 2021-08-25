@@ -3,19 +3,31 @@
   <mat-toolbar-row class="tololbar">
       <span>ForumDev<mat-icon></mat-icon></span>
       <span class="example-spacer"></span>
+      
+    <span *ngIf="user.email !== null">
+      <button mat-button [matMenuTriggerFor]="user_menu">{{user.email}}</button>
+      <mat-menu #user_menu="matMenu">
+          <!-- <button mat-menu-item>{{user.email}}</button> -->
+          <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+  </span>
+  <span *ngIf="user.nome === null;">
+      <button mat-flat-button color="accent" routerLink="/login">Login</button>
+  </span>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="">
+      <span>Cursos > {{curso}}<mat-icon></mat-icon></span>
+      <span class="example-spacer"></span>
+
       <button mat-raised-button (click)="novoTopico()"> 
         <mat-icon>add</mat-icon>Novo Tópico
     </button>
   </mat-toolbar-row>
-  <mat-toolbar-row class="">
-      <span>Cursos > {{curso}}<mat-icon></mat-icon></span>
-
-  </mat-toolbar-row>
 </mat-toolbar>
 
 <!-- LISTA DE TOPICOS -->
-<button mat-raised-button color="accent" (click)="goBack()">Voltar</button>
 <mat-list>
+  <button mat-raised-button color="accent" (click)="goBack()">Voltar</button>
     <mat-list-item *ngFor="let topico of topicos">
       <mat-icon mat-list-icon class="icone-lista">topico</mat-icon>
       <div mat-line class="titulo"(click)="detalhesTopico(topico.id)">{{topico.titulo}}</div>

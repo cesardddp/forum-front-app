@@ -18,6 +18,11 @@ export class TopicosComponent implements OnInit {
 
   topicos!: Topico[];
   curso!:string;
+  user={
+    'nome':localStorage.getItem('nome'),
+    'email':localStorage.getItem('email'),
+    'token':localStorage.getItem('token'),
+  };
   constructor(
     public topicoService: TopicoService,
     private router: Router,
@@ -51,6 +56,10 @@ export class TopicosComponent implements OnInit {
     this.location.back();
   }
   novoTopico():void{
+    if (!localStorage.nome){
+       this.router.navigate(['login'])    
+       return
+    }
     const dialogRef = this.dialog.open(TopicoFormDialogComponent,{
       minWidth: '400px',
       data:{
@@ -61,4 +70,9 @@ export class TopicosComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+  logout(){
+    localStorage.clear()
+    window.location.reload();
+  }
+
 }
