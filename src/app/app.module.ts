@@ -35,6 +35,7 @@ import { JwtInterceptor } from './shared/services/jwt.interceptor';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { TopicoFormDialogComponent } from './forum/cursos/topicos/topico-form-dialog/topico-form-dialog.component';
 import { MatInputModule } from '@angular/material/input';
+import {TextFieldModule} from '@angular/cdk/text-field';
 
 import { LoginComponent } from './user/login/login.component';
 import { UpdateFormDialogComponent } from './forum/cursos/topicos/topico-detalhe/update-form-dialog/update-form-dialog.component';
@@ -69,7 +70,8 @@ import { FooterComponent } from './footer/footer.component';
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    TextFieldModule
     
 
   ],

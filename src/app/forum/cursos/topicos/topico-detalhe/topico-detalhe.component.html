@@ -14,7 +14,10 @@
     </span>
   </mat-toolbar-row>
   <mat-toolbar-row class="">
-    <span><t routerLink="/">Cursos</t> > <t routerLink="/{{cursoNome}}">{{cursoNome}}</t> > {{topico.titulo}}<mat-icon></mat-icon></span>
+    <span>
+      <t routerLink="/">Cursos</t> > <t routerLink="/{{cursoNome}}">{{cursoNome}}</t> > {{topico.titulo}}<mat-icon>
+      </mat-icon>
+    </span>
 
   </mat-toolbar-row>
 </mat-toolbar>
@@ -30,35 +33,39 @@
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
         <h1>{{topico.titulo}}</h1>
         <div class="topico-info">
-          <ul>
-            <li><b>Criado em: </b>{{topico.dataCriacao}}</li>
-            <li><b>Autor: </b>{{topico.nomeAutor}}</li>
-            <li>{{topico.status}}</li>
-          </ul>
+          <div> <b>Autor: </b>{{topico.nomeAutor}} </div>
+          <div> <b>Criado em: </b>{{topico.dataCriacao | date:'dd/MM/yyyy hh:mm'}} </div>
+          <div> {{topico.status === "NAO_RESPONDIDO" ? "Não respondido ainda!" : "Respondido!"}} </div>
         </div>
       </div>
-      <!-- opções de autor e admin -->
-        <div class="admin-button-row">
-          <button *ngIf="isAutor" (click)="editarTopico()" color="primary">
-            <mat-icon>edit icon</mat-icon>
-          </button>
-          <button mat-fab color="primary" *ngIf="isAdmin" (click)="apagarTopico()" >
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-      <hr>
       <div class="topico-content">
         <p>{{topico.mensagem}}</p>
       </div>
+      <hr>
+      <div class="admin-button-row">
+        <button *ngIf="isAutor" (click)="editarTopico()" color="primary">
+          <mat-icon>edit icon</mat-icon>
+        </button>
+        <button mat-fab color="primary" *ngIf="isAdmin" (click)="apagarTopico()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
 
       <div class="respostas">
-        <textarea type="text" name="" id="" [(ngModel)]="textarea"></textarea>
-        <button mat-raised-button color="accent" (click)="postNovaResposta()">Nova Resposta</button>
+        <form [formGroup]="topicoForm">
 
+          <mat-form-field appearance="outline">
+            <mat-label>{{topico.respostas.length === 0 ? "Seja o primeiro a responder!" : "Insira uma nova resposta"}}
+            </mat-label>
+            <textarea matInput formControlName="resposta" name="resposta"></textarea>
+          </mat-form-field>
+
+          <button mat-raised-button color="accent" (click)="postNovaResposta()">Nova Resposta</button>
+        </form>
         <div *ngFor="let resposta of topico.respostas">
           <div>
-            <b>Autor: </b> {{resposta.autor.email}}
-            <b>Respondido em: </b> {{resposta.dataCriacao}}
+            <b>Autor: </b> {{resposta.nomeAutor}}
+            <b>Respondido em: </b> {{resposta.dataCriacao | date:'dd/MM/yyyy hh:mm'}}
             <p>{{resposta.mensagem}}</p>
           </div>
         </div>

@@ -23,21 +23,14 @@ export class TopicoService {
   ) { }
 
   public getTopicos(curso:string): Observable<ResponsePageable> {
-    // public getTopicos(curso:string): Observable<Topico[]> {
       return this.httpClient.get<ResponsePageable>(this.apiUrl+"?nomeCurso="+curso);// + '?flag=' + flag);
-      // debugger;
-      // const topicos = of(TOPICOS)
-      //  return topicos
+ 
     }
   public getTopico(id:number): Observable<Topico> {
-    // const topico = of(TOPICO)
-    //  return topico
     return this.httpClient.get<Topico>(this.apiUrl+"/"+id);// + '?flag=' + flag);
   }
-  public novaResposta(resposta:Resposta):Observable<Resposta> {
-    // debugger;
-    // return this.httpClient.post<any>(this.apiUrl,resposta,this.httpOptions);   
-    return of(resposta)
+  public novaResposta(resposta:Resposta,topicoId:number):Observable<any> {
+    return this.httpClient.post<any>(this.apiUrl+"/"+topicoId+'/resposta',resposta,this.httpOptions);   
   }
   public novoTopico(topico:Topico):Observable<any>{
     return this.httpClient.post<Topico>(this.apiUrl,topico,this.httpOptions)

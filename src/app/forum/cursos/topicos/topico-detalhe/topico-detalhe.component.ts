@@ -8,6 +8,7 @@ import { Resposta } from 'src/app/shared/models/resposta.model';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateFormDialogComponent } from './update-form-dialog/update-form-dialog.component';
 import { DeleteFormDialogComponent } from './delete-form-dialog/delete-form-dialog.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-topico-detalhe',
@@ -22,7 +23,9 @@ export class TopicoDetalheComponent implements OnInit {
   isAutor!:Boolean;
   isAdmin!:Boolean;
 
-  textarea="";
+  // textarea="";
+  public topicoForm!: FormGroup;
+
   user={
     'nome':localStorage.getItem('nome'),
     'email':localStorage.getItem('email'),
@@ -31,6 +34,7 @@ export class TopicoDetalheComponent implements OnInit {
     
   };
   constructor(
+    private fb: FormBuilder,
     private topicoService: TopicoService,
     private route: ActivatedRoute,
     private location: Location,
@@ -43,7 +47,9 @@ export class TopicoDetalheComponent implements OnInit {
     this.topicoId = Number(this.route.snapshot.paramMap.get('topicoId'))
     this.cursoNome = String(this.route.snapshot.paramMap.get('cursoDoTopico'));
     this.getTopico();
-    // this.isAutor = 
+    this.topicoForm = this.fb.group({
+      resposta: ["", [Validators.minLength(10)]],
+    });
   }
   getTopico(): void {
     this.topicoService.getTopico(this.topicoId)
@@ -60,28 +66,22 @@ export class TopicoDetalheComponent implements OnInit {
     this.location.back();
   }
   postNovaResposta(){
-    //mock user - apagar
-    let user = new Usuario()
-    user.email = String(localStorage.getItem("email"))
-    // user.nome = String(localStorage.getItem("nome"))
     let novaResposta = new Resposta()
 
-    novaResposta.mensagem = this.textarea,
-    novaResposta.autor = user
-    novaResposta.topico = this.topico,
-    novaResposta.solucao = false
-    
-    let result = this.topicoService.novaResposta(novaResposta);
-    // debugger;
-    this.topico.respostas.push(novaResposta)
-    this.textarea = ""
+    novaResposta.mensagem = this.topicoForm.value.resposta;
+
+    let result = this.topicoService.novaResposta(novaResposta,this.topico.id)
+    .subscribe(
+      data => {
+        this.topico.respostas.push(data.body);
+        this.topicoForm.reset();
+
+      }
+    )
     
   }
   editarTopico():void{
-    // if (!localStorage.nome){
-    //    this.router.navigate(['login'])    
-    //    return
-    // }
+   
     const dialogRef = this.dialog.open(UpdateFormDialogComponent,{
       minWidth: '400px',
       data:{
@@ -94,10 +94,6 @@ export class TopicoDetalheComponent implements OnInit {
     });
   }
   apagarTopico():void{
-    // if (!localStorage.nome){
-    //    this.router.navigate(['login'])    
-    //    return
-    // }
     const dialogRef = this.dialog.open(DeleteFormDialogComponent,{
       minWidth: '400px',
       data:{

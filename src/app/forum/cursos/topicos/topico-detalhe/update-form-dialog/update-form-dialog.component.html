@@ -1,12 +1,10 @@
 <h1 mat-dialog-title>Atualizar tópico</h1>
 <div mat-dialog-content>
     <form class="novo-topico" [formGroup]="topicoForm">
-        <span>"{{data.topico.titulo}}"</span>
         <mat-form-field class="novo-topico-full-width">
             <mat-label>Novo título</mat-label>
             <input matInput formControlName="titulo" name="titulo">
         </mat-form-field>
-        <span>"{{data.topico.mensagem}}"</span>
         <mat-form-field class="novo-topico-full-width">
             <mat-label>Nova mensagem</mat-label>
             <textarea matInput formControlName="mensagem" name="mensagem"></textarea>

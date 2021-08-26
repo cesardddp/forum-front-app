@@ -27,8 +27,8 @@ export class UpdateFormDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.topicoForm = this.fb.group({
-      titulo: ["", [Validators.required,Validators.minLength(5)]],
-      mensagem: ["", [Validators.required,Validators.minLength(10)]],
+      titulo: [this.data.topico.titulo, [Validators.required,Validators.minLength(5)]],
+      mensagem: [this.data.topico.mensagem, [Validators.required,Validators.minLength(10)]],
     });
   }
   cancelar(): void {
@@ -48,15 +48,14 @@ export class UpdateFormDialogComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          // debugger
-          if (data.status===201 && data.statusText === "OK") {
-            window.location.reload()
-            // this.router.navigate([this.data.cursoNome,data.body.id])    
+          if (data.status===200 && data.statusText === "OK") {
+            this.data.topico.titulo = data.body.titulo;
+            this.data.topico.mensagem = data.body.mensagem;
+            this.dialogRef.close();
+            this.topicoForm.reset();
           }
         }
       );
-    this.dialogRef.close();
-    this.topicoForm.reset();
   }
 
 }
