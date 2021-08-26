@@ -1,6 +1,10 @@
 body {
     background-color: #9c27b0;
 }
+.mat-toolbar {
+    margin-bottom: -3.1rem;
+
+}
 form {
     background-color: #303030;
     display: grid;

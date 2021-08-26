@@ -19,7 +19,6 @@ export class TopicoService {
     };
   constructor(
     private httpClient: HttpClient,
-
   ) { }
 
   public getTopicos(curso:string): Observable<ResponsePageable> {
