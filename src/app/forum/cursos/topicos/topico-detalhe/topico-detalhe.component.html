@@ -6,7 +6,6 @@
     <span *ngIf="user.email !== null">
       <button mat-button [matMenuTriggerFor]="user_menu">{{user.email}}</button>
       <mat-menu #user_menu="matMenu">
-        <!-- <button mat-menu-item>{{user.email}}</button> -->
         <button mat-menu-item (click)="logout()">Logout</button>
       </mat-menu>
     </span>
@@ -15,7 +14,7 @@
     </span>
   </mat-toolbar-row>
   <mat-toolbar-row class="">
-    <span>Cursos > {{cursoNome}} > {{topico.titulo}}<mat-icon></mat-icon></span>
+    <span><t routerLink="/">Cursos</t> > <t routerLink="/{{cursoNome}}">{{cursoNome}}</t> > {{topico.titulo}}<mat-icon></mat-icon></span>
 
   </mat-toolbar-row>
 </mat-toolbar>
@@ -26,10 +25,7 @@
   <button mat-raised-button color="accent" (click)="goBack()">Voltar</button>
 
   <div class="container">
-    <!-- <mat-grid-list cols="4"> -->
-
     <div class="topico">
-
       <div class="topico-header">
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
         <h1>{{topico.titulo}}</h1>
@@ -40,11 +36,15 @@
             <li>{{topico.status}}</li>
           </ul>
         </div>
-        <!-- <hr> -->
       </div>
-        <div class="example-button-row">
-          <button mat-stroked-button (click)="editarTopico()" color="primary">Editar</button>
-          <button mat-stroked-button (click)="apagarTopico()" color="warn">Apagar</button>
+      <!-- opções de autor e admin -->
+        <div class="admin-button-row">
+          <button *ngIf="isAutor" (click)="editarTopico()" color="primary">
+            <mat-icon>edit icon</mat-icon>
+          </button>
+          <button mat-fab color="primary" *ngIf="isAdmin" (click)="apagarTopico()" >
+            <mat-icon>delete</mat-icon>
+          </button>
         </div>
       <hr>
       <div class="topico-content">

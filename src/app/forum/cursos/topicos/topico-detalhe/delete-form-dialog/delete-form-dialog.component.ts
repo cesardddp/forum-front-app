@@ -24,7 +24,7 @@ export class DeleteFormDialogComponent implements OnInit {
     this.dialogRef.close();
   }
   apagaTopico(){
-    debugger;
+    // debugger;
     this.rest.deletarTopico(this.data.topico.id)
     .subscribe(
       data => {

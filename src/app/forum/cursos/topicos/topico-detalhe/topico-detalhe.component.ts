@@ -19,12 +19,16 @@ export class TopicoDetalheComponent implements OnInit {
   topico!: Topico;// | undefined;
   cursoNome!:string;
   topicoId!:number;
+  isAutor!:Boolean;
+  isAdmin!:Boolean;
 
   textarea="";
   user={
     'nome':localStorage.getItem('nome'),
     'email':localStorage.getItem('email'),
     'token':localStorage.getItem('token'),
+    'role':localStorage.getItem('role'),
+    
   };
   constructor(
     private topicoService: TopicoService,
@@ -39,16 +43,18 @@ export class TopicoDetalheComponent implements OnInit {
     this.topicoId = Number(this.route.snapshot.paramMap.get('topicoId'))
     this.cursoNome = String(this.route.snapshot.paramMap.get('cursoDoTopico'));
     this.getTopico();
+    // this.isAutor = 
   }
   getTopico(): void {
-    // debugger;
     this.topicoService.getTopico(this.topicoId)
       .subscribe(
-        topico => this.topico = topico
-      );
-    console.log(this.topico)
-    console.log('teste')
-
+        topico => {
+          this.topico = topico;
+          console.log(this.topico);
+          this.isAutor = this.user.nome === this.topico.nomeAutor;
+          this.isAdmin = this.user.role === "ROLE_ADMIN";
+          }
+        );
   }
   goBack(): void {
     this.location.back();

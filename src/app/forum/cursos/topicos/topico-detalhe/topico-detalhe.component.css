@@ -29,7 +29,7 @@
   display: block;
   overflow: hidden;
   position: absolute;
-  background-color: turquoise;
+  background-color: orchid;
 }
 
 .recomendacao {
@@ -72,7 +72,7 @@
   flex: 1 1 auto;
 }
 
-.example-button-row {
+.admin-button-row {
   display: table-cell;
   width: 490px;
 }

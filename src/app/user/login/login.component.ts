@@ -31,11 +31,23 @@ export class LoginComponent implements OnInit {
     this.rest.login(this.loginForm).subscribe(
       data => {
         if(data.status===200){
-          localStorage.setItem('nome',this.loginForm.value.nome);
-          localStorage.setItem('email',this.loginForm.value.email);
           localStorage.setItem('token',data.body.token);
-          this.router.navigate([''])  
+          // 
+          this.getUser();
+          // this.router.navigate([''])  
         }
+      }
+    );
+  }
+  getUser(){
+    this.rest.getUser().subscribe(
+      data => {
+        localStorage.setItem('nome',data.body.nome);
+        localStorage.setItem('email',data.body.email);
+        localStorage.setItem('id',data.body.id);
+        localStorage.setItem('role',data.body.role);
+        this.router.navigate([''])  
+
       }
     );
   }
